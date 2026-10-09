@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Plaza Hair, salão de beleza no Campo Belo, São Paulo. Especialistas em loiros, unhas, noivas e maquiagem. Rua Demóstenes, 491.">
+<meta name="theme-color" content="#1d0f26">
+<title>Plaza Hair Campo Belo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: hero with live flowing-strand canvas, marquee, services grid, split "visit" panel with live open/closed status */
+:root{
+  --bg:#1d0f26;        /* plum night */
+  --bg2:#2a1636;       /* raised plum */
+  --ink:#fbefe6;       /* warm blush white */
+  --mute:#c9b3c4;      /* dusty mauve */
+  --accent:#ff9f7a;    /* apricot */
+  --accent2:#e86fa3;   /* orchid pink */
+  --line:rgba(251,239,230,.14);
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);overflow-x:hidden;padding-inline:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;letter-spacing:-.01em}
+em{font-style:italic;color:var(--accent)}
+.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{font-family:var(--display);font-size:1.45rem;text-decoration:none;font-weight:500}
+.logo b{color:var(--accent);font-style:italic;font-weight:400}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+nav ul a{text-decoration:none;color:var(--mute);font-size:.95rem;transition:color .2s}
+nav ul a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:999px;background:var(--accent);color:#2a1020;font-weight:600;text-decoration:none;border:0;cursor:pointer;font:600 .95rem var(--body);transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);box-shadow:none}
+@media(max-width:720px){nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:clamp(56px,10vw,120px) clamp(72px,11vw,140px)}
+#strands{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(2.8rem,8.5vw,7rem);line-height:.98;font-weight:300;max-width:12ch;margin-top:18px}
+.hero h1 span{display:block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 span:nth-child(2){animation-delay:.12s}
+.hero h1 span:nth-child(3){animation-delay:.24s}
+.hero p.lead{max-width:46ch;color:var(--mute);font-size:1.15rem;margin:28px 0 36px;animation:rise .9s .38s both}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;animation:rise .9s .5s both}
+.status{display:inline-flex;align-items:center;gap:10px;margin-top:40px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:.9rem;color:var(--mute);animation:rise .9s .62s both}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--mute)}
+.status.open .dot{background:#7be0a0;box-shadow:0 0 0 0 rgba(123,224,160,.6);animation:pulse 2s infinite}
+@keyframes rise{from{transform:translateY(34px);opacity:.01}to{transform:none;opacity:1}}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(123,224,160,0)}100%{box-shadow:0 0 0 0 rgba(123,224,160,0)}}
+
+/* marquee */
+.marq{border-block:1px solid var(--line);overflow:hidden;padding-block:18px;background:var(--bg2)}
+.marq div{display:flex;gap:48px;width:max-content;animation:slide 38s linear infinite;font-family:var(--display);font-style:italic;font-size:1.7rem;color:var(--mute)}
+.marq span::after{content:"✦";margin-left:48px;color:var(--accent);font-style:normal;font-size:1rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding-block:clamp(64px,9vw,120px)}
+.head{display:grid;gap:14px;margin-bottom:clamp(36px,5vw,64px);max-width:640px}
+.head h2{font-size:clamp(2rem,5vw,3.4rem);line-height:1.08;font-weight:300}
+.head p{color:var(--mute);margin:0}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{position:relative;padding:30px 26px 34px;border-radius:22px;background:var(--bg2);border:1px solid var(--line);overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s;transform:translateY(var(--y,0px))}
+.card::before{content:"";position:absolute;inset:auto -30% -60% auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(closest-side,var(--c,var(--accent2)),transparent);opacity:.18;transition:opacity .4s,transform .6s}
+.card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.card:hover::before{opacity:.42;transform:scale(1.25)}
+.card svg{width:44px;height:44px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:22px}
+.card h3{font-size:1.5rem;margin-bottom:8px}
+.card p{margin:0;color:var(--mute);font-size:.98rem}
+.card:nth-child(even){--c:var(--accent)}
+
+/* gallery */
+.shots{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.shots figure{margin:0;border-radius:22px;overflow:hidden;background:var(--bg2);aspect-ratio:4/5;grid-column:span 2}
+.shots figure:nth-child(1){grid-column:span 3;aspect-ratio:auto;grid-row:span 2}
+.shots figure:nth-child(2){grid-column:span 3}
+.shots figure:nth-child(3),.shots figure:nth-child(4),.shots figure:nth-child(5){grid-column:span 2}
+.shots img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.shots figure:hover img{transform:scale(1.06)}
+.more{display:flex;justify-content:center;margin:40px 0 0}
+@media(max-width:720px){
+  .shots{grid-template-columns:1fr 1fr}
+  .shots figure,.shots figure:nth-child(n){grid-column:span 1;grid-row:auto;aspect-ratio:4/5}
+  .shots figure:nth-child(1){grid-column:span 2;aspect-ratio:4/4.4}
+}
+
+/* promise */
+.promise{background:linear-gradient(160deg,var(--bg2),var(--bg))}
+.promise .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,90px);align-items:center}
+.promise blockquote{margin:0;font-family:var(--display);font-weight:300;font-size:clamp(1.7rem,3.8vw,2.7rem);line-height:1.2;text-wrap:balance}
+.facts{display:grid;gap:0}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.facts div:first-child{border-top:1px solid var(--line)}
+.facts dt{color:var(--mute)}
+.facts dd{margin:0;font-family:var(--display);font-size:1.25rem;text-align:right}
+@media(max-width:820px){.promise .wrap{grid-template-columns:1fr}}
+
+/* visit */
+.visit .box{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:var(--bg2)}
+.visit .info{padding:clamp(28px,4vw,52px);display:grid;gap:26px;align-content:start;min-width:0}
+.visit h3{font-size:1.9rem}
+.visit .row{display:grid;gap:4px}
+.visit .row small{color:var(--accent);letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;font-weight:600}
+.hours{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.hours li{display:flex;justify-content:space-between;gap:12px;color:var(--mute);padding:6px 10px;border-radius:10px}
+.hours li.today{background:rgba(255,159,122,.12);color:var(--ink)}
+.copy{display:inline-flex;gap:10px;align-items:center;flex-wrap:wrap}
+.copy button{background:none;border:1px solid var(--line);color:var(--mute);border-radius:999px;padding:3px 12px;font:500 .8rem var(--body);cursor:pointer}
+.copy button:hover{color:var(--ink);border-color:var(--accent)}
+.mapart{position:relative;display:block;min-height:340px;background:#21112b;overflow:hidden}
+.mapart svg{position:absolute;inset:0;width:100%;height:100%;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.mapart:hover svg{transform:scale(1.04)}
+.mapart svg text{font-family:var(--body);font-weight:600}
+.mapart .ring{transform-box:fill-box;transform-origin:center;animation:ring 2.6s infinite}
+.mapart .ring.r2{animation-delay:1.3s}
+.mapart .open{position:absolute;left:16px;bottom:16px;background:var(--ink);color:#2a1020;padding:10px 16px;border-radius:999px;font-weight:600;font-size:.9rem}
+.mapart svg{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;left:52%;top:46%;width:22px;height:22px;margin:-11px;border-radius:50%;background:var(--accent)}
+.pin::before,.pin::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--accent);animation:ring 2.4s infinite}
+.pin::after{animation-delay:1.2s}
+@keyframes ring{from{transform:scale(1);opacity:.9}to{transform:scale(4.2);opacity:0}}
+.mapart .tag{position:absolute;left:52%;top:46%;transform:translate(18px,-50%);background:var(--ink);color:#2a1020;padding:6px 12px;border-radius:10px;font-weight:600;font-size:.85rem;white-space:nowrap}
+@media(max-width:820px){.visit .box{grid-template-columns:1fr}}
+
+/* reviews */
+.rev{text-align:center}
+.rev .head{margin-inline:auto;justify-items:center}
+.rev .links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:44px}
+.score{display:flex;align-items:baseline;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+.score strong{font-family:var(--display);font-weight:300;font-size:clamp(3.5rem,9vw,6rem);line-height:1}
+.score .stars{color:var(--accent);letter-spacing:.12em;font-size:1.4rem}
+.score small{color:var(--mute);font-size:.95rem}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;text-align:left}
+.quotes figure{margin:0;padding:28px;border-radius:22px;background:var(--bg2);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;gap:22px;min-width:0}
+.quotes blockquote{margin:0;font-family:var(--display);font-weight:300;font-size:1.2rem;line-height:1.4}
+.quotes figcaption{color:var(--accent);font-size:.85rem;letter-spacing:.06em}
+
+footer{border-top:1px solid var(--line);padding-block:36px;color:var(--mute);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.reveal{transform:translateY(28px);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{transform:none}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#topo">Plaza<b>Hair</b></a>
+    <ul>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#trabalhos">Trabalhos</a></li>
+      <li><a href="#casa">A casa</a></li>
+      <li><a href="#visita">Visite</a></li>
+      <li><a href="#avaliacoes">Avaliações</a></li>
+    </ul>
+    <a class="btn" href="#visita">Agendar</a>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <canvas id="strands" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <span class="eyebrow">Salão de beleza · Campo Belo, São Paulo</span>
+    <h1><span>Cabelo com</span><span>cuidado, <em>do</em></span><span><em>corte</em> ao brilho.</span></h1>
+    <p class="lead">Especialistas em cabelos loiros, unhas, noivas e maquiagem na Rua Demóstenes, com o capricho de quem atende o bairro desde 2010.</p>
+    <div class="cta">
+      <a class="btn" href="https://api.whatsapp.com/send?phone=551150490040" target="_blank" rel="noopener">Agendar no WhatsApp</a>
+      <a class="btn ghost" href="tel:+551150490040">Ligar (11) 5049-0040</a>
+      <a class="btn ghost" href="https://instagram.com/plazahair01" target="_blank" rel="noopener">@plazahair01</a>
+    </div>
+    <div class="status" id="status"><span class="dot"></span><span id="statusText">Terça a sábado, das 10h às 19h</span></div>
+  </div>
+</header>
+
+<div class="marq" aria-hidden="true">
+  <div id="marq"></div>
+</div>
+
+<section id="servicos">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Serviços</span>
+      <h2>Tudo o que você precisa para sair <em>se sentindo bem</em>.</h2>
+      <p>Valores e tempos variam por serviço. Ligue para combinar o seu horário.</p>
+    </div>
+    <div class="grid">
+      <article class="card reveal">
+        <svg viewBox="0 0 48 48"><circle cx="14" cy="36" r="6"/><circle cx="14" cy="12" r="6"/><path d="M19 15l20 18M19 33L39 15"/></svg>
+        <h3>Cortes e escovas</h3>
+        <p>Corte, finalização e escova pensados para o seu tipo de fio e a sua rotina, de morenas a loiras.</p>
+      </article>
+      <article class="card reveal">
+        <svg viewBox="0 0 48 48"><path d="M24 6c6 8 12 14 12 22a12 12 0 01-24 0c0-8 6-14 12-22z"/><path d="M18 30a6 6 0 006 6"/></svg>
+        <h3>Loiros e coloração</h3>
+        <p>A especialidade da casa: mechas, platinados e luzes, com cor que respeita a saúde do cabelo.</p>
+      </article>
+      <article class="card reveal">
+        <svg viewBox="0 0 48 48"><path d="M10 40c0-14 6-26 14-26s14 12 14 26"/><path d="M16 40c0-9 3-17 8-17s8 8 8 17"/><path d="M24 8V4M14 11l-2-3M34 11l2-3"/></svg>
+        <h3>Noivas, makes e penteados</h3>
+        <p>Maquiagem e penteado para casamentos, festas e dias que pedem um visual especial.</p>
+      </article>
+      <article class="card reveal">
+        <svg viewBox="0 0 48 48"><path d="M20 40V22a4 4 0 018 0v18"/><path d="M16 40h16"/><path d="M24 18V8M20 12l4-4 4 4"/></svg>
+        <h3>Unhas</h3>
+        <p>Manicure e pedicure com esmaltação duradoura e todo o capricho no acabamento.</p>
+      </article>
+      <article class="card reveal">
+        <svg viewBox="0 0 48 48"><path d="M6 24c8-10 28-10 36 0-8 10-28 10-36 0z"/><circle cx="24" cy="24" r="5"/></svg>
+        <h3>Sobrancelha e micropigmentação</h3>
+        <p>Design com linha e micropigmentação para um olhar mais definido e natural.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="trabalhos">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Nosso trabalho</span>
+      <h2>Cor, brilho e <em>movimento</em>, direto da cadeira.</h2>
+      <p>Resultados recentes publicados no Instagram do salão.</p>
+    </div>
+    <div class="shots">
+      <figure class="reveal"><img src="images/g1.jpg" alt="Cabelo loiro com mechas, em corte médio repicado" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/g2.jpg" alt="Cabelo castanho com ondas e reflexos caramelo" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/g3.jpg" alt="Balayage loiro em cabelo ondulado" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/g4.jpg" alt="Loiro claro com ondas suaves" loading="lazy"></figure>
+      <figure class="reveal"><img src="images/g5.jpg" alt="Cabelo longo com ondas e luzes douradas" loading="lazy"></figure>
+    </div>
+    <p class="more reveal"><a class="btn ghost" href="https://instagram.com/plazahair01" target="_blank" rel="noopener">Ver mais no @plazahair01</a></p>
+  </div>
+</section>
+
+<section class="promise" id="casa">
+  <div class="wrap">
+    <blockquote class="reveal">Com Erica Areco e Emanuel Cabral, especialistas em cabelos loiros, você <em>sai sempre mais bonita</em> do que chegou.</blockquote>
+    <dl class="facts reveal">
+      <div><dt>No bairro desde</dt><dd>2010</dd></div>
+      <div><dt>Endereço</dt><dd>Rua Demóstenes, 491</dd></div>
+      <div><dt>Atendimento</dt><dd>Terça a sábado</dd></div>
+      <div><dt>Nota no Google</dt><dd>4,8 ★ (40)</dd></div>
+      <div><dt>Instagram</dt><dd>@plazahair01</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="visit" id="visita">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Visite</span>
+      <h2>Venha tomar um café e <em>cuidar de você</em>.</h2>
+    </div>
+    <div class="box reveal">
+      <div class="info">
+        <div class="row">
+          <small>Endereço</small>
+          <span>Rua Demóstenes, 491<br>Campo Belo, São Paulo - SP<br>CEP 04614-012</span>
+        </div>
+        <div class="row">
+          <small>Telefone e WhatsApp</small>
+          <span class="copy"><a href="tel:+551150490040">(11) 5049-0040</a><button type="button" id="copyBtn">Copiar</button><a href="https://api.whatsapp.com/send?phone=551150490040" target="_blank" rel="noopener">Chamar no WhatsApp</a></span>
+        </div>
+        <div class="row">
+          <small>Horários</small>
+          <ul class="hours" id="hours">
+            <li data-d="1"><span>Segunda</span><span>Fechado</span></li>
+            <li data-d="2"><span>Terça</span><span>10h – 19h</span></li>
+            <li data-d="3"><span>Quarta</span><span>10h – 19h</span></li>
+            <li data-d="4"><span>Quinta</span><span>10h – 19h</span></li>
+            <li data-d="5"><span>Sexta</span><span>10h – 19h</span></li>
+            <li data-d="6"><span>Sábado</span><span>10h – 19h</span></li>
+            <li data-d="0"><span>Domingo</span><span>Fechado</span></li>
+          </ul>
+        </div>
+        <div>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Plaza+Hair+Rua+Dem%C3%B3stenes+491+Campo+Belo+S%C3%A3o+Paulo" target="_blank" rel="noopener">Como chegar</a>
+        </div>
+      </div>
+      <a class="mapart" href="https://www.google.com/maps/place/Plaza+Hair/@-23.6157374,-46.6743855,18z/data=!4m6!3m5!1s0x94ce5a71acd72d65:0x388c4d511f5d0c93!8m2!3d-23.6157374!4d-46.6743855!16s%2Fg%2F11c37lfjwl" target="_blank" rel="noopener" aria-label="Abrir o Plaza Hair no Google Maps">
+        <svg id="cityMap" viewBox="0 0 800 520" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Mapa ilustrado com a localização do Plaza Hair na Rua Demóstenes, Campo Belo"></svg>
+        <span class="open">Abrir no Google Maps ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="rev" id="avaliacoes">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Avaliações</span>
+      <h2>Quem já passou por aqui <em>conta melhor</em>.</h2>
+      <p>Nota 4,8 no Google, com 40 avaliações.</p>
+    </div>
+    <div class="score reveal" aria-label="Nota 4,8 de 5">
+      <strong>4,8</strong><span class="stars" aria-hidden="true">★★★★★</span><small>40 avaliações no Google</small>
+    </div>
+    <div class="quotes">
+      <figure class="reveal"><blockquote>Considero o Plaza Hair além do requinte visual, não conheço nenhum outro que já frequentei tão classe A, local acolhedor e atendimento muito especial!</blockquote><figcaption>Beatriz Leite · Google</figcaption></figure>
+      <figure class="reveal"><blockquote>Amei o salão, minhas unhas ficaram lindas, as meninas são maravilhosas.</blockquote><figcaption>Manicure e pedicure Wal paixão · Google</figcaption></figure>
+      <figure class="reveal"><blockquote>Excelente atendimento com profissionais de primeiro nível. Sabem o que fazem e fazem bem. Minha esposa adorou!</blockquote><figcaption>Carlos Mello · Google</figcaption></figure>
+    </div>
+    <div class="links reveal">
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Plaza+Hair+Rua+Dem%C3%B3stenes+491+Campo+Belo+S%C3%A3o+Paulo" target="_blank" rel="noopener">Ver no Google</a>
+      <a class="btn ghost" href="https://www.fresha.com/lvp/plaza-hair-rua-demostenes-rw799v" target="_blank" rel="noopener">Ver no Fresha</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> Plaza Hair Cabeleireiros · Rua Demóstenes, 491 · Campo Belo</span>
+    <a href="https://instagram.com/plazahair01" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // marquee
+  var words=['Loiros','Morenas','Noivas','Unhas','Maquiagem','Micropigmentação','Corte','Escova'];
+  var html=words.map(function(w){return '<span>'+w+'</span>'}).join('');
+  document.getElementById('marq').innerHTML=html+html;
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  // open/closed in São Paulo time
+  function nowSP(){
+    var p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+    var o={};p.forEach(function(x){o[x.type]=x.value});
+    var map={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+    return {d:map[o.weekday],h:(+o.hour%24)+(+o.minute)/60};
+  }
+  try{
+    var t=nowSP(), open=t.d>=2&&t.d<=6&&t.h>=10&&t.h<19;
+    var st=document.getElementById('status'), tx=document.getElementById('statusText');
+    st.classList.toggle('open',open);
+    tx.textContent=open?'Aberto agora · fecha às 19h':'Fechado agora · terça a sábado, das 10h às 19h';
+    var li=document.querySelector('#hours li[data-d="'+t.d+'"]'); if(li) li.classList.add('today');
+  }catch(e){}
+
+  // illustrated street map around Rua Demóstenes, 491 (schematic, not to scale)
+  (function(){
+    var svg=document.getElementById('cityMap'); if(!svg) return;
+    var cx=480, cy=250, sy=104, sx=150, o='';
+    var names={'-1':'R. Barão do Triunfo','-2':'R. Princesa Isabel','-3':'R. Pascal','1':'Av. Ibirapuera','2':'R. Morais de Barros'};
+    o+='<defs><radialGradient id="mg" cx="60%" cy="48%" r="75%"><stop offset="0" stop-color="#3a1f4a"/><stop offset="1" stop-color="#1d0f26"/></radialGradient></defs>';
+    o+='<rect width="800" height="520" fill="url(#mg)"/>';
+    o+='<g transform="rotate(38 '+cx+' '+cy+')">';
+    // blocks
+    for(var k=-5;k<5;k++)for(var j=-4;j<4;j++){
+      var x=cx+j*sx+9, y=cy+k*sy+9, w=sx-18, h=sy-18;
+      var park=(k===-2&&j===-1), fill=park?'rgba(123,224,160,.16)':'rgba(251,239,230,'+(((k*7+j*13)%5+5)%5*0.012+0.035)+')';
+      o+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="9" fill="'+fill+'"/>';
+    }
+    // streets
+    for(k=-5;k<=5;k++){var yy=cy+k*sy; o+='<line x1="'+(cx-700)+'" x2="'+(cx+700)+'" y1="'+yy+'" y2="'+yy+'" stroke="'+(k===0?'rgba(255,159,122,.55)':'rgba(251,239,230,.10)')+'" stroke-width="'+(k===0?9:3)+'" stroke-linecap="round"/>'}
+    for(j=-4;j<=4;j++){var xx=cx+j*sx, av=(j===1); o+='<line y1="'+(cy-620)+'" y2="'+(cy+620)+'" x1="'+xx+'" x2="'+xx+'" stroke="'+(av?'rgba(232,111,163,.55)':'rgba(251,239,230,.10)')+'" stroke-width="'+(av?12:3)+'" stroke-linecap="round"/>'}
+    // street names
+    o+='<text x="'+(cx-250)+'" y="'+(cy-12)+'" fill="#ff9f7a" font-size="15" letter-spacing="1.5">R. DEMÓSTENES</text>';
+    o+='<text x="'+(cx+110)+'" y="'+(cy-12)+'" fill="#ff9f7a" font-size="15" letter-spacing="1.5">R. DEMÓSTENES</text>';
+    [-3,-2,-1,1,2].forEach(function(j){
+      var xx=cx+j*sx, yy=cy+3*sy-14;
+      o+='<text transform="translate('+(xx-8)+' '+(yy)+') rotate(-90)" fill="'+(j===1?'#e86fa3':'rgba(251,239,230,.55)')+'" font-size="12.5" letter-spacing="1">'+names[j].toUpperCase()+'</text>';
+    });
+    // places
+    o+='<text x="'+(cx-sx+20)+'" y="'+(cy-2*sy+54)+'" fill="#7be0a0" font-size="12">Praça</text>';
+    o+='<text x="'+(cx-sx+16)+'" y="'+(cy-sy+54)+'" fill="rgba(251,239,230,.7)" font-size="12">27º Distrito Policial</text>';
+    o+='<text x="'+(cx+sx+16)+'" y="'+(cy+2*sy+54)+'" fill="rgba(251,239,230,.7)" font-size="12">Leroy Merlin</text>';
+    o+='</g>';
+    // pin
+    o+='<circle class="ring" cx="'+cx+'" cy="'+cy+'" r="9" fill="none" stroke="#ff9f7a" stroke-width="2"/>';
+    o+='<circle class="ring r2" cx="'+cx+'" cy="'+cy+'" r="9" fill="none" stroke="#ff9f7a" stroke-width="2"/>';
+    o+='<path d="M'+cx+' '+cy+' c-16 -22 -22 -30 -22 -44 a22 22 0 1 1 44 0 c0 14 -6 22 -22 44z" fill="#ff9f7a"/>';
+    o+='<circle cx="'+cx+'" cy="'+(cy-44)+'" r="8" fill="#2a1020"/>';
+    o+='<g transform="translate('+(cx+34)+' '+(cy-62)+')"><rect width="118" height="36" rx="10" fill="#fbefe6"/><text x="12" y="16" font-size="13" fill="#2a1020">Plaza Hair</text><text x="12" y="30" font-size="10.5" fill="#6a4a5a" font-weight="500">Rua Demóstenes, 491</text></g>';
+    svg.innerHTML=o;
+  })();
+
+  // copy phone
+  var cb=document.getElementById('copyBtn');
+  cb.addEventListener('click',function(){
+    var done=function(){cb.textContent='Copiado';setTimeout(function(){cb.textContent='Copiar'},1800)};
+    try{navigator.clipboard.writeText('(11) 5049-0040').then(done,function(){})}catch(e){}
+  });
+
+  // reveal on scroll (transform only, content stays visible)
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+    els.forEach(function(el,i){el.style.transitionDelay=(i%5)*60+'ms';io.observe(el)});
+  } else els.forEach(function(el){el.classList.add('in')});
+
+  // flowing strands
+  var cv=document.getElementById('strands'), cx=cv.getContext('2d'), W,H,dpr,mx=0.5,my=0.5,tmx=.5,tmy=.5;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){dpr=Math.min(window.devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)}
+  size();window.addEventListener('resize',size);
+  cv.parentElement.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();tmx=(e.clientX-r.left)/r.width;tmy=(e.clientY-r.top)/r.height});
+  var N=34;
+  function draw(t){
+    mx+=(tmx-mx)*.04;my+=(tmy-my)*.04;
+    cx.clearRect(0,0,W,H);
+    for(var i=0;i<N;i++){
+      var k=i/(N-1);
+      cx.beginPath();
+      for(var x=-20;x<=W+20;x+=14){
+        var nx=x/W;
+        var y=H*(.18+.64*k)+Math.sin(nx*3.2+t*.0004+k*5)*H*.11+Math.sin(nx*7+t*.0003-k*3)*H*.03+(my-.5)*60*(k-.5)+(mx-.5)*40*Math.sin(nx*3);
+        if(x===-20)cx.moveTo(x,y);else cx.lineTo(x,y);
+      }
+      var g=cx.createLinearGradient(0,0,W,0);
+      g.addColorStop(0,'rgba(232,111,163,0)');
+      g.addColorStop(.35,'rgba(232,111,163,'+(.12+.2*k)+')');
+      g.addColorStop(.75,'rgba(255,159,122,'+(.12+.22*(1-k))+')');
+      g.addColorStop(1,'rgba(255,159,122,0)');
+      cx.strokeStyle=g;cx.lineWidth=1.1;cx.stroke();
+    }
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+
+</body>
+</html>
